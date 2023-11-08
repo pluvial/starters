@@ -9,15 +9,23 @@ await $`mkdir -p svelte`;
 cd('svelte');
 
 const bool = [false, true];
-const templates = ['default', 'skeleton', 'skeletonlib'];
-const types = [null, 'checkjs', 'typescript'];
 
-const permutations = [templates, types, bool, bool, bool, bool].reduce(
-  (acc, arr) => acc.flatMap(el => arr.map(val => [...el, val])),
-  [[]],
-);
+const templates = [
+  // template
+  ['default', 'skeleton', 'skeletonlib'],
+  // types
+  [null, 'checkjs', 'typescript'],
+  // prettier
+  bool,
+  // eslint
+  bool,
+  // playwright
+  bool,
+  // vitest
+  bool,
+].reduce((acc, arr) => acc.flatMap(el => arr.map(val => [...el, val])), [[]]);
 
-for (const [template, types, prettier, eslint, playwright, vitest] of permutations) {
+function properties([template, types, prettier, eslint, playwright, vitest]) {
   const path = [
     template,
     types && `-${types}`,
@@ -29,7 +37,6 @@ for (const [template, types, prettier, eslint, playwright, vitest] of permutatio
     .filter(Boolean)
     .join('');
   const name = `svelte-${path}`;
-
   /** @type {Options} */
   const options = {
     name,
@@ -40,8 +47,31 @@ for (const [template, types, prettier, eslint, playwright, vitest] of permutatio
     playwright,
     vitest,
   };
-  console.log(JSON.stringify({ path, options }));
-  await create(path, options);
+  return [path, options];
+}
+
+// non-parallel version
+// const failed = [];
+// for (const template of templates) {
+//   const [path, options] = properties(template);
+//   try {
+//     await create(path, options);
+//   } catch (e) {
+//     failed.push([path, options]);
+//   }
+// }
+
+const results = await Promise.allSettled(
+  templates.map(template => create(...properties(template))),
+);
+const failed = results
+  .map((result, i) => (result.status === 'rejected' ? properties(templates[i]) : null))
+  .filter(Boolean);
+
+if (failed.length > 0) {
+  console.warn('Failed templates:');
+  console.warn(failed.map(([path]) => path).join(', '), '\n');
+  console.warn(failed.map(([path, options]) => `${path}: ${JSON.stringify(options)}`).join('\n\n'));
 }
 
 cd('..');
