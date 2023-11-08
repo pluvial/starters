@@ -1,6 +1,13 @@
 {
   "name": "@pluvial/starters",
+  "version": "0.0.0",
   "description": "Starters for pluvial projects",
   "license": "MIT",
-  "version": "0.0.0"
+  "type": "module",
+  "devDependencies": {
+    "zx": "^7.2.3"
+  },
+  "scripts": {
+    "create-vite": "./create-vite.js"
+  }
 }
