@@ -1,0 +1,26 @@
+{
+  "name": "@pluvial/astro-framework-multiple",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^3.0.1",
+    "@astrojs/react": "^3.0.4",
+    "@astrojs/solid-js": "^3.0.2",
+    "@astrojs/svelte": "^4.0.3",
+    "@astrojs/vue": "^3.0.4",
+    "astro": "^3.4.4",
+    "preact": "^10.17.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "solid-js": "^1.7.11",
+    "svelte": "^4.2.0",
+    "vue": "^3.3.4"
+  }
+}

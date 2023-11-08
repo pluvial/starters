@@ -1,0 +1,22 @@
+{
+  "name": "@pluvial/astro-integration",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "keywords": [
+    "withastro"
+  ],
+  "scripts": {},
+  "devDependencies": {
+    "astro": "^3.4.4"
+  },
+  "peerDependencies": {
+    "astro": "^3.0.0"
+  }
+}

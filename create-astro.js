@@ -5,6 +5,7 @@ import 'zx/globals';
 await $`rm -rf astro`;
 await $`mkdir -p astro`;
 cd('astro');
+
 // | Name                         | Description                                            |
 // | :--------------------------- | :----------------------------------------------------- |
 // | `--help` (`-h`)              | Display available flags.                                |
@@ -18,6 +19,55 @@ cd('astro');
 // | `--ref`                      | Specify an Astro branch (default: latest).             |
 // | `--fancy`                    | Enable full Unicode support for Windows.               |
 // | `--typescript <option>`      | TypeScript option: `strict` / `strictest` / `relaxed`. |
-// await $`pnpm create astro basics --template basics --no-install --no-git --typescript strict`;
-await $`pnpm create astro basics -y --template basics --no-install --no-git`;
+
+const templates = [
+  'basics',
+  'blog',
+  'component',
+  'framework-alpine',
+  'framework-lit',
+  'framework-multiple',
+  'framework-preact',
+  'framework-react',
+  'framework-solid',
+  'framework-svelte',
+  'framework-vue',
+  'hackernews',
+  'integration',
+  'middleware',
+  'minimal',
+  'non-html-pages',
+  'portfolio',
+  'ssr',
+  'view-transitions',
+  'with-markdoc',
+  'with-markdown-plugins',
+  'with-markdown-shiki',
+  'with-mdx',
+  'with-nanostores',
+  'with-tailwindcss',
+  'with-vite-plugin-pwa',
+  'with-vitest',
+];
+
+const base = '@pluvial';
+await $`mkdir -p ${base}`;
+
+const failed = [];
+for (const template of templates) {
+  try {
+    const name = `${base}/astro-${template}`;
+    await $`pnpm create astro ${name} -y --template ${template} --no-install --no-git --typescript strictest`;
+    await $`mv ${name} ${template}`;
+  } catch {
+    failed.push(template);
+  }
+}
+
+if (failed.length > 0) {
+  console.warn(`Failed templates: ${failed}`);
+}
+
+await $`rmdir ${base}`;
+
 cd('..');
