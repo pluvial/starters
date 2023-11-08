@@ -9,6 +9,7 @@
     "zx": "^7.2.3"
   },
   "scripts": {
+    "create-astro": "./create-astro.js",
     "create-svelte": "./create-svelte.js",
     "create-vite": "./create-vite.js"
   }
