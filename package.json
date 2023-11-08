@@ -13,6 +13,7 @@
     "create-astro": "./create-astro.js",
     "create-nuxt": "./create-nuxt.js",
     "create-qwik": "./create-qwik.js",
+    "create-solid": "./create-solid.js",
     "create-svelte": "./create-svelte.js",
     "create-vite": "./create-vite.js"
   }
