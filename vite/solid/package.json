@@ -1,5 +1,5 @@
 {
-  "name": "solid",
+  "name": "@pluvial/vite-solid",
   "private": true,
   "version": "0.0.0",
   "type": "module",

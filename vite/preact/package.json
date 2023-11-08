@@ -1,5 +1,5 @@
 {
-  "name": "preact",
+  "name": "@pluvial/vite-preact",
   "private": true,
   "version": "0.0.0",
   "type": "module",

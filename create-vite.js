@@ -32,8 +32,13 @@ const templates = [
 //   await $`pnpm create vite --template ${template} ${template}`;
 // }
 
+const timeout = '10s';
 const results = await Promise.allSettled(
-  templates.map(template => $`pnpm create vite --template ${template} ${template}`.timeout('10s')),
+  templates.map(async template => {
+    const name = `@pluvial/vite-${template}`;
+    await $`pnpm create vite ${name} --template ${template}`.timeout(timeout);
+    $`mv ${name} ${template}`;
+  }),
 );
 
 const failed = results.map((result, i) => (result.status === 'rejected' ? i : null)).filter(x => x);

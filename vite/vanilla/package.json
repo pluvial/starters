@@ -1,5 +1,5 @@
 {
-  "name": "vanilla",
+  "name": "@pluvial/vite-vanilla",
   "private": true,
   "version": "0.0.0",
   "type": "module",
