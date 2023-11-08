@@ -53,16 +53,28 @@ const templates = [
 const base = '@pluvial';
 await $`mkdir -p ${base}`;
 
-const failed = [];
-for (const template of templates) {
-  try {
+// non-parallel version
+// const failed = [];
+// for (const template of templates) {
+//   try {
+//     const name = `${base}/astro-${template}`;
+//     await $`pnpm create astro ${name} -y --template ${template} --no-install --no-git --typescript strictest`;
+//     await $`mv ${name} ${template}`;
+//   } catch {
+//     failed.push(template);
+//   }
+// }
+
+const results = await Promise.allSettled(
+  templates.map(async template => {
     const name = `${base}/astro-${template}`;
     await $`pnpm create astro ${name} -y --template ${template} --no-install --no-git --typescript strictest`;
     await $`mv ${name} ${template}`;
-  } catch {
-    failed.push(template);
-  }
-}
+  }),
+);
+const failed = results
+  .map((result, i) => (result.status === 'rejected' ? templates[i] : null))
+  .filter(x => x);
 
 if (failed.length > 0) {
   console.warn(`Failed templates: ${failed}`);
