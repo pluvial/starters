@@ -1,5 +1,6 @@
 packages:
   - astro/*
   - nuxt/*
+  - qwik/*
   - svelte/*
   - vite/*
