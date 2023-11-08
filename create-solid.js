@@ -23,6 +23,7 @@ const templates = [
   'with-websocket',
 ];
 
+// non-parallel version
 const failed = [];
 for (const template of templates) {
   try {
@@ -32,6 +33,17 @@ for (const template of templates) {
     failed.push(template);
   }
 }
+
+// TODO: fix parallel version, not working correctly
+// const results = await Promise.allSettled(
+//   templates.map(template => {
+//     const answers = $`echo ${template}; sleep 1; echo yes; sleep 1; echo yes; sleep 1; echo yes`;
+//     return answers.pipe($`pnpm create solid ${template}`);
+//   }),
+// );
+// const failed = results
+//   .map((result, i) => (result.status === 'rejected' ? templates[i] : null))
+//   .filter(x => x);
 
 if (failed.length > 0) {
   console.warn(`Failed templates: ${failed}`);
