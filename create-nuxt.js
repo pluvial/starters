@@ -48,14 +48,25 @@ const templates = [
   'themes/new-uno',
 ];
 
-const failed = [];
-for (const template of templates) {
-  try {
-    await $`nuxi init ${template} --template ${template} --packageManager pnpm --no-install --no-gitInit`;
-  } catch {
-    failed.push(template);
-  }
-}
+// non-parallel version
+// const failed = [];
+// for (const template of templates) {
+//   try {
+//     await $`nuxi init ${template} --template ${template} --packageManager pnpm --no-install --no-gitInit`;
+//   } catch {
+//     failed.push(template);
+//   }
+// }
+
+const results = await Promise.allSettled(
+  templates.map(
+    template =>
+      $`nuxi init ${template} --template ${template} --packageManager pnpm --no-install --no-gitInit`,
+  ),
+);
+const failed = results
+  .map((result, i) => (result.status === 'rejected' ? templates[i] : null))
+  .filter(x => x);
 
 if (failed.length > 0) {
   console.warn(`Failed templates: ${failed}`);
