@@ -27,30 +27,37 @@ const templates = [
   'qwik-ts',
 ];
 
+const base = '@pluvial';
+await $`mkdir -p ${base}`;
+
 // non-parallel version
+// const failed = [];
 // for (const template of templates) {
-//   await $`pnpm create vite --template ${template} ${template}`;
+//   try {
+//     const name = `${base}/vite-${template}`;
+//     await $`pnpm create vite ${name} --template ${template}`;
+//     await $`mv ${name} ${template}`;
+//   } catch {
+//     failed.push(template);
+//   }
 // }
 
 const timeout = '10s';
 const results = await Promise.allSettled(
   templates.map(async template => {
-    const name = `@pluvial/vite-${template}`;
+    const name = `${base}/vite-${template}`;
     await $`pnpm create vite ${name} --template ${template}`.timeout(timeout);
-    $`mv ${name} ${template}`;
+    await $`mv ${name} ${template}`;
   }),
 );
+const failed = results
+  .map((result, i) => (result.status === 'rejected' ? templates[i] : null))
+  .filter(x => x);
 
-const failed = results.map((result, i) => (result.status === 'rejected' ? i : null)).filter(x => x);
 if (failed.length > 0) {
-  console.warn(`Failed templates: ${failed.map(i => templates[i])}`);
-  // const reasons = failed.map(i => results[i].reason);
-  // for (const stdout of reasons.map(reason => reason.stdout)) {
-  //   console.warn(stdout);
-  // }
-  // for (const stderr of reasons.map(reason => reason.stderr)) {
-  //   console.error(stderr);
-  // }
+  console.warn(`Failed templates: ${failed}`);
 }
+
+await $`rmdir ${base}`;
 
 cd('..');
