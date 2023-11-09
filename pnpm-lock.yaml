@@ -8,12 +8,24 @@ importers:
 
   .:
     devDependencies:
+      create-astro:
+        specifier: ^4.5.0
+        version: 4.5.0
       create-qwik:
         specifier: ^1.2.17
         version: 1.2.17
+      create-solid:
+        specifier: ^0.3.10
+        version: 0.3.10
       create-svelte:
         specifier: ^5.1.1
         version: 5.1.1
+      create-vite:
+        specifier: ^4.4.1
+        version: 4.4.1
+      create-vue:
+        specifier: ^3.8.0
+        version: 3.8.0
       nuxi:
         specifier: ^3.9.1
         version: 3.9.1
@@ -25420,6 +25432,15 @@ packages:
       alpinejs: 3.13.2
     dev: false
 
+  /@astrojs/cli-kit@0.3.1:
+    resolution: {integrity: sha512-BEzf3gudr4XrrrInJKD+GSS5O+GXRTukLUpOfgqdTSq6d48EWVhigNHobmlQGbpa9FEAw+sZmvmHmhS29QhnwA==}
+    engines: {node: '>=18.14.1'}
+    dependencies:
+      chalk: 5.3.0
+      log-update: 5.0.1
+      sisteransi: 1.0.5
+    dev: true
+
   /@astrojs/compiler@2.3.0:
     resolution: {integrity: sha512-pxYRAaRdMS6XUll8lbFM+Lr0DI1HKIDT+VpiC+S+9di5H/nmm3znZOgdMlLiMxADot+56eps+M1BvtKfQremXA==}
 
@@ -34317,6 +34338,17 @@ packages:
       crc-32: 1.2.2
       readable-stream: 3.6.2
 
+  /create-astro@4.5.0:
+    resolution: {integrity: sha512-R5eBJNAyL8x6S5K0KfrWTfNRZLxUYb6EB9jEKQcD9StqUCUmc+W/gkTgKZ/BkAA0dXah8nrhNHEUUcrwJUIKMw==}
+    engines: {node: '>=18.14.1'}
+    hasBin: true
+    dependencies:
+      '@astrojs/cli-kit': 0.3.1
+      giget: 1.1.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /create-qwik@1.2.17:
     resolution: {integrity: sha512-p4FlOhAwZ6LAjpVOFn8tvxvWFBdqF9Co7dpDjSNDIwv2L0hcKf8Ye1BYu7rGeKxFvcDgidho8P+jUoHKgyElJQ==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11', npm: '>=6.0.0'}
@@ -34326,12 +34358,29 @@ packages:
   /create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
 
+  /create-solid@0.3.10:
+    resolution: {integrity: sha512-W+N+gh8wjHCLU2pwKFu/DDwTKx3jROo2PgKy42lZI0CnIYxH/APU8qjD7MhgOW6TFdSy51W1MIGAMguDxjTzIA==}
+    hasBin: true
+    dev: true
+
   /create-svelte@5.1.1:
     resolution: {integrity: sha512-rvmOQyAuS/CLV5gieOPiSedJOXHB46oSfCRdYOrRewv8TJ3WmenPL78XPej78sptIw+AjdXcpcJYb/65bkwxHQ==}
     hasBin: true
     dependencies:
       '@clack/prompts': 0.7.0
       kleur: 4.1.5
+    dev: true
+
+  /create-vite@4.4.1:
+    resolution: {integrity: sha512-VbE5lc4aO7gterlwTDPxfnEhp/e0xAJui7NydmQiLpKq2yBLTQGcfMXeZeyoIH+E/Di2MQpE4o0K3lZNjlFL+A==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    dev: true
+
+  /create-vue@3.8.0:
+    resolution: {integrity: sha512-iH5cJpKzxCllNWLRW/zo2kYvLcCDPdrRIw9bFqQT4arPUsySdBfXWfgzKwHGP6unYc1J07vxnILdqbLlW0g/XQ==}
+    engines: {node: '>=v16.20.0'}
+    hasBin: true
     dev: true
 
   /cron-schedule@3.0.6:
@@ -36942,6 +36991,21 @@ packages:
       assert-plus: 1.0.0
     dev: true
 
+  /giget@1.1.2:
+    resolution: {integrity: sha512-HsLoS07HiQ5oqvObOI+Qb2tyZH4Gj5nYGfF9qQcZNrPw+uEFhdXtgJr01aO2pWadGHucajYDLxxbtQkm97ON2A==}
+    hasBin: true
+    dependencies:
+      colorette: 2.0.20
+      defu: 6.1.3
+      https-proxy-agent: 5.0.1
+      mri: 1.2.0
+      node-fetch-native: 1.4.1
+      pathe: 1.1.1
+      tar: 6.2.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /giget@1.1.3:
     resolution: {integrity: sha512-zHuCeqtfgqgDwvXlR84UNgnJDuUHQcNI5OqWqFxxuk2BshuKbYhJWdxBsEo4PvKqoGh23lUAIvBNpChMLv7/9Q==}
     hasBin: true
@@ -38093,6 +38157,11 @@ packages:
   /is-fullwidth-code-point@3.0.0:
     resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
     engines: {node: '>=8'}
+
+  /is-fullwidth-code-point@4.0.0:
+    resolution: {integrity: sha512-O4L094N2/dZ7xqVdrXhh9r1KODPJpFms8B5sGdJLPy664AgvXsreZUyCQQNItZRDlYug4xStLjNp/sz3HvBowQ==}
+    engines: {node: '>=12'}
+    dev: true
 
   /is-generator-function@1.0.10:
     resolution: {integrity: sha512-jsEjy9l3yiXEQ+PsXdmBwEPcOxaXWLspKdplFUVI9vq1iZgIekeC0L167qeu86czQaxed3q/Uzuw0swL0irL8A==}
@@ -39363,6 +39432,17 @@ packages:
       cli-cursor: 3.1.0
       slice-ansi: 4.0.0
       wrap-ansi: 6.2.0
+    dev: true
+
+  /log-update@5.0.1:
+    resolution: {integrity: sha512-5UtUDQ/6edw4ofyljDNcOVJQ4c7OjDro4h3y8e1GQL5iYElYclVHJ3zeWchylvMaKnDbDilC8irOVyexnA/Slw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      ansi-escapes: 5.0.0
+      cli-cursor: 4.0.0
+      slice-ansi: 5.0.0
+      strip-ansi: 7.1.0
+      wrap-ansi: 8.1.0
     dev: true
 
   /loglevel-plugin-prefix@0.8.4:
@@ -44770,6 +44850,14 @@ packages:
       ansi-styles: 4.3.0
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
+    dev: true
+
+  /slice-ansi@5.0.0:
+    resolution: {integrity: sha512-FC+lgizVPfie0kkhqUScwRu1O/lF6NOgJmlCgK+/LYxDCTk8sGelYaHDhFcDN+Sn3Cv+3VSa4Byeo+IMCzpMgQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      ansi-styles: 6.2.1
+      is-fullwidth-code-point: 4.0.0
     dev: true
 
   /slugify@1.6.6:

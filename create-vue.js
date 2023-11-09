@@ -63,7 +63,7 @@ await $`mkdir -p ${base}`;
 //   const [path, options] = properties(template);
 //   const name = `${base}/vue-${path}`;
 //   try {
-//     await $`pnpm create vue ${name} ${options}`;
+//     await $`create-vue ${name} ${options}`;
 //     await $`mv ${name} ${path}`;
 //   } catch (e) {
 //     failed.push([path, options]);
@@ -74,7 +74,7 @@ const results = await Promise.allSettled(
   templates.map(async template => {
     const [path, options] = properties(template);
     const name = `${base}/vue-${path}`;
-    await $`pnpm create vue ${name} ${options}`;
+    await $`create-vue ${name} ${options}`;
     await $`mv ${name} ${path}`;
   }),
 );

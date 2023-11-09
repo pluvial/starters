@@ -58,7 +58,7 @@ await $`mkdir -p ${base}`;
 // for (const template of templates) {
 //   try {
 //     const name = `${base}/astro-${template}`;
-//     await $`pnpm create astro ${name} -y --template ${template} --no-install --no-git --typescript strictest`;
+//     await $`create-astro ${name} -y --template ${template} --no-install --no-git --typescript strictest`;
 //     await $`mv ${name} ${template}`;
 //   } catch {
 //     failed.push(template);
@@ -68,7 +68,7 @@ await $`mkdir -p ${base}`;
 const results = await Promise.allSettled(
   templates.map(async template => {
     const name = `${base}/astro-${template}`;
-    await $`pnpm create astro ${name} -y --template ${template} --no-install --no-git --typescript strictest`;
+    await $`create-astro ${name} -y --template ${template} --no-install --no-git --typescript strictest`;
     await $`mv ${name} ${template}`;
   }),
 );

@@ -28,8 +28,8 @@ const failed = [];
 for (const template of templates) {
   try {
     // const answers = $`echo ${template}; sleep 1; echo yes; sleep 1; echo yes; sleep 1; echo yes`;
-    // await answers.pipe($`pnpm create solid ${template}`);
-    await $`pnpm create solid ${template}`;
+    // await answers.pipe($`create-solid ${template}`);
+    await $`create-solid ${template}`;
   } catch {
     failed.push(template);
   }
@@ -39,7 +39,7 @@ for (const template of templates) {
 // const results = await Promise.allSettled(
 //   templates.map(template => {
 //     const answers = $`echo ${template}; sleep 1; echo yes; sleep 1; echo yes; sleep 1; echo yes`;
-//     return answers.pipe($`pnpm create solid ${template}`);
+//     return answers.pipe($`create-solid ${template}`);
 //   }),
 // );
 // const failed = results

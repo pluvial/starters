@@ -35,7 +35,7 @@ await $`mkdir -p ${base}`;
 // for (const template of templates) {
 //   try {
 //     const name = `${base}/vite-${template}`;
-//     await $`pnpm create vite ${name} --template ${template}`;
+//     await $`create-vite ${name} --template ${template}`;
 //     await $`mv ${name} ${template}`;
 //   } catch {
 //     failed.push(template);
@@ -46,7 +46,7 @@ const timeout = '10s';
 const results = await Promise.allSettled(
   templates.map(async template => {
     const name = `${base}/vite-${template}`;
-    await $`pnpm create vite ${name} --template ${template}`.timeout(timeout);
+    await $`create-vite ${name} --template ${template}`.timeout(timeout);
     await $`mv ${name} ${template}`;
   }),
 );

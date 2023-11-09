@@ -5,8 +5,12 @@
   "license": "MIT",
   "type": "module",
   "devDependencies": {
+    "create-astro": "^4.5.0",
     "create-qwik": "^1.2.17",
+    "create-solid": "^0.3.10",
     "create-svelte": "^5.1.1",
+    "create-vite": "^4.4.1",
+    "create-vue": "^3.8.0",
     "nuxi": "^3.9.1",
     "zx": "^7.2.3"
   },
