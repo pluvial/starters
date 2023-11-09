@@ -27,8 +27,9 @@ const templates = [
 const failed = [];
 for (const template of templates) {
   try {
-    const answers = $`echo ${template}; sleep 1; echo yes; sleep 1; echo yes; sleep 1; echo yes`;
-    await answers.pipe($`pnpm create solid ${template}`);
+    // const answers = $`echo ${template}; sleep 1; echo yes; sleep 1; echo yes; sleep 1; echo yes`;
+    // await answers.pipe($`pnpm create solid ${template}`);
+    await $`pnpm create solid ${template}`;
   } catch {
     failed.push(template);
   }

@@ -1,18 +1,17 @@
-import { Title } from "solid-start";
 import Counter from "~/components/Counter";
+import "./index.css";
 
 export default function Home() {
   return (
     <main>
-      <Title>Hello World</Title>
       <h1>Hello world!</h1>
       <Counter />
       <p>
         Visit{" "}
-        <a href="https://start.solidjs.com" target="_blank">
-          start.solidjs.com
+        <a href="https://solidjs.com" target="_blank">
+          solidjs.com
         </a>{" "}
-        to learn how to build SolidStart apps.
+        to learn how to build Solid apps.
       </p>
     </main>
   );

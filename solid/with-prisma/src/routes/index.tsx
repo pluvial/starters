@@ -1,19 +1,28 @@
-import { Title } from "solid-start";
-import Counter from "~/components/Counter";
+import { refetchRouteData, useRouteData } from "solid-start";
+import { createServerAction$ } from "solid-start/server";
+import { logout } from "~/db/session";
+import { useUser } from "../db/useUser";
+
+export function routeData() {
+  return useUser();
+}
 
 export default function Home() {
+  const user = useRouteData<typeof routeData>();
+  const [, { Form }] = createServerAction$((f: FormData, { request }) =>
+    logout(request)
+  );
+
   return (
-    <main>
-      <Title>Hello World</Title>
-      <h1>Hello world!</h1>
-      <Counter />
-      <p>
-        Visit{" "}
-        <a href="https://start.solidjs.com" target="_blank">
-          start.solidjs.com
-        </a>{" "}
-        to learn how to build SolidStart apps.
-      </p>
+    <main class="full-width">
+      <h1>Hello {user()?.username}</h1>
+      <h3>Message board</h3>
+      <button onClick={() => refetchRouteData()}>Refresh</button>
+      <Form>
+        <button name="logout" type="submit">
+          Logout
+        </button>
+      </Form>
     </main>
   );
 }

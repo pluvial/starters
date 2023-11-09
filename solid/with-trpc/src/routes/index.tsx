@@ -1,7 +1,9 @@
 import { Title } from "solid-start";
 import Counter from "~/components/Counter";
+import { api } from "~/utils/api";
 
 export default function Home() {
+  const hello = api.example.hello.useQuery(() => "World");
   return (
     <main>
       <Title>Hello World</Title>
@@ -14,6 +16,9 @@ export default function Home() {
         </a>{" "}
         to learn how to build SolidStart apps.
       </p>
+      <pre>
+        <code>{JSON.stringify(hello.data, null, 2)}</code>
+      </pre>
     </main>
   );
 }
