@@ -5,3 +5,4 @@ packages:
   - solid/*
   - svelte/*
   - vite/*
+  - vue/*

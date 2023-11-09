@@ -16,6 +16,7 @@
     "create-qwik": "./create-qwik.js",
     "create-solid": "./create-solid.js",
     "create-svelte": "./create-svelte.js",
-    "create-vite": "./create-vite.js"
+    "create-vite": "./create-vite.js",
+    "create-vue": "./create-vue.js"
   }
 }
