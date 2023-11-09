@@ -57,17 +57,30 @@ function properties([ts, jsx, router, pinia, vitest, e2e, lint]) {
 const base = '@pluvial';
 await $`mkdir -p ${base}`;
 
-const failed = [];
-for (const template of templates) {
-  const [path, options] = properties(template);
-  const name = `${base}/vue-${path}`;
-  try {
+// non-parallel version
+// const failed = [];
+// for (const template of templates) {
+//   const [path, options] = properties(template);
+//   const name = `${base}/vue-${path}`;
+//   try {
+//     await $`pnpm create vue ${name} ${options}`;
+//     await $`mv ${name} ${path}`;
+//   } catch (e) {
+//     failed.push([path, options]);
+//   }
+// }
+
+const results = await Promise.allSettled(
+  templates.map(async template => {
+    const [path, options] = properties(template);
+    const name = `${base}/vue-${path}`;
     await $`pnpm create vue ${name} ${options}`;
     await $`mv ${name} ${path}`;
-  } catch (e) {
-    failed.push([path, options]);
-  }
-}
+  }),
+);
+const failed = results
+  .map((result, i) => (result.status === 'rejected' ? properties(templates[i]) : null))
+  .filter(Boolean);
 
 if (failed.length > 0) {
   console.warn('Failed templates:');
