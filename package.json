@@ -5,6 +5,7 @@
   "license": "MIT",
   "type": "module",
   "devDependencies": {
+    "create-qwik": "^1.2.17",
     "create-svelte": "^5.1.1",
     "nuxi": "^3.9.1",
     "zx": "^7.2.3"
