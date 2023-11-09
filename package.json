@@ -15,12 +15,12 @@
     "zx": "^7.2.3"
   },
   "scripts": {
-    "create-astro": "./create-astro.js",
-    "create-nuxt": "./create-nuxt.js",
-    "create-qwik": "./create-qwik.js",
-    "create-solid": "./create-solid.js",
-    "create-svelte": "./create-svelte.js",
-    "create-vite": "./create-vite.js",
-    "create-vue": "./create-vue.js"
+    "astro": "./astro.js",
+    "nuxt": "./nuxt.js",
+    "qwik": "./qwik.js",
+    "solid": "./solid.js",
+    "svelte": "./svelte.js",
+    "vite": "./vite.js",
+    "vue": "./vue.js"
   }
 }
