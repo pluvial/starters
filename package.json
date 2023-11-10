@@ -15,6 +15,7 @@
     "zx": "^7.2.3"
   },
   "scripts": {
+    "all": "pnpm astro & pnpm nuxt & pnpm qwik & pnpm svelte & pnpm vite & pnpm vue # & pnpm solid",
     "astro": "./astro.js",
     "nuxt": "./nuxt.js",
     "qwik": "./qwik.js",
