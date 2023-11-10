@@ -25,6 +25,9 @@ const templates = [
   bool,
 ].reduce((acc, arr) => acc.flatMap(el => arr.map(val => [...el, val])), [[]]);
 
+const base = '@pluvial';
+await $`mkdir -p ${base}`;
+
 function properties([template, types, prettier, eslint, playwright, vitest]) {
   const path = [
     template,
@@ -36,7 +39,7 @@ function properties([template, types, prettier, eslint, playwright, vitest]) {
   ]
     .filter(Boolean)
     .join('');
-  const name = `svelte-${path}`;
+  const name = `${base}/svelte-${path}`;
   /** @type {Options} */
   const options = {
     name,
@@ -73,5 +76,7 @@ if (failed.length > 0) {
   console.warn(failed.map(([path]) => path).join(', '), '\n');
   console.warn(failed.map(([path, options]) => `${path}: ${JSON.stringify(options)}`).join('\n\n'));
 }
+
+await $`rmdir ${base}`;
 
 cd('..');
