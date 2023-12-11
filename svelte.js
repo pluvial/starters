@@ -23,9 +23,11 @@ const templates = [
   bool,
   // vitest
   bool,
+  // svelte5
+  bool,
 ].reduce((acc, arr) => acc.flatMap(el => arr.map(val => [...el, val])), [[]]);
 
-function properties([template, types, prettier, eslint, playwright, vitest]) {
+function properties([template, types, prettier, eslint, playwright, vitest, svelte5]) {
   const path = [
     template,
     types && `-${types}`,
@@ -33,6 +35,7 @@ function properties([template, types, prettier, eslint, playwright, vitest]) {
     eslint && '-eslint',
     playwright && '-playwright',
     vitest && '-vitest',
+    svelte5 && '-svelte5',
   ]
     .filter(Boolean)
     .join('');
@@ -46,6 +49,7 @@ function properties([template, types, prettier, eslint, playwright, vitest]) {
     eslint,
     playwright,
     vitest,
+    svelte5,
   };
   return [path, options];
 }
