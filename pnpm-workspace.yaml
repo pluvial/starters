@@ -1,8 +1,0 @@
-packages:
-  - astro/*
-  - nuxt/*
-  - qwik/*
-  - solid/*
-  - svelte/*
-  - vite/*
-  - vue/*
