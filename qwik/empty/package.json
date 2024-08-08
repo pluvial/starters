@@ -1,13 +1,15 @@
 {
   "name": "my-qwik-empty-starter",
-  "description": "App with Routing built-in ready to create your app",
+  "description": "Blank project with routing included",
   "engines": {
-    "node": ">=15.0.0"
+    "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
   },
+  "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
   "private": true,
   "trustedDependencies": [
     "sharp"
   ],
+  "trustedDependencies-annotation": "Needed for bun to allow running install scripts",
   "type": "module",
   "scripts": {
     "build": "qwik build",
@@ -25,18 +27,18 @@
     "qwik": "qwik"
   },
   "devDependencies": {
-    "@builder.io/qwik": "^1.4.0",
-    "@builder.io/qwik-city": "^1.4.0",
-    "@types/eslint": "^8.56.2",
-    "@types/node": "^20.11.0",
-    "@typescript-eslint/eslint-plugin": "^6.18.1",
-    "@typescript-eslint/parser": "^6.18.1",
-    "eslint": "^8.56.0",
-    "eslint-plugin-qwik": "^1.4.0",
-    "prettier": "^3.1.1",
-    "typescript": "5.3.3",
+    "@builder.io/qwik": "^1.8.0",
+    "@builder.io/qwik-city": "^1.8.0",
+    "@types/eslint": "8.56.10",
+    "@types/node": "20.14.11",
+    "@typescript-eslint/eslint-plugin": "7.16.1",
+    "@typescript-eslint/parser": "7.16.1",
+    "eslint": "8.57.0",
+    "eslint-plugin-qwik": "^1.8.0",
+    "prettier": "3.3.3",
+    "typescript": "5.4.5",
     "undici": "*",
-    "vite": "^5.0.11",
+    "vite": "5.3.5",
     "vite-tsconfig-paths": "^4.2.1"
   }
 }

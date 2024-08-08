@@ -1,7 +1,7 @@
 {
   "name": "my-qwik-library-name",
   "version": "0.0.1",
-  "description": "Create a reusable Qwik component library",
+  "description": "Create a Qwik library",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
   "types": "./lib-types/index.d.ts",
@@ -17,7 +17,7 @@
     "lib-types"
   ],
   "engines": {
-    "node": ">=15.0.0"
+    "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
   },
   "private": false,
   "type": "module",
@@ -36,18 +36,18 @@
     "qwik": "qwik"
   },
   "devDependencies": {
-    "@builder.io/qwik": "1.4.0",
-    "@types/eslint": "^8.56.2",
-    "@types/node": "^20.11.0",
-    "@typescript-eslint/eslint-plugin": "^6.18.1",
-    "@typescript-eslint/parser": "^6.18.1",
-    "eslint": "^8.56.0",
-    "eslint-plugin-qwik": "latest",
+    "@builder.io/qwik": "1.8.0",
+    "@types/eslint": "8.56.10",
+    "@types/node": "20.14.11",
+    "@typescript-eslint/eslint-plugin": "7.16.1",
+    "@typescript-eslint/parser": "7.16.1",
+    "eslint": "8.57.0",
+    "eslint-plugin-qwik": "1.8.0",
     "np": "^8.0.4",
-    "prettier": "^3.1.1",
-    "typescript": "5.3.3",
+    "prettier": "3.3.3",
+    "typescript": "5.4.5",
     "undici": "*",
-    "vite": "^5.0.11",
+    "vite": "5.3.5",
     "vite-tsconfig-paths": "^4.2.1"
   }
 }
